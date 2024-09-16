@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrleansServer", "OrleansServer\OrleansServer.csproj", "{A4540E54-121E-4A4B-ACD7-5E2DCD3D85C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansServer", "OrleansServer\OrleansServer.csproj", "{A4540E54-121E-4A4B-ACD7-5E2DCD3D85C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrleansClient", "OrleansClient\OrleansClient.csproj", "{9BD0CB86-289B-4F8F-9450-C4E764B28E17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansClient", "OrleansClient\OrleansClient.csproj", "{9BD0CB86-289B-4F8F-9450-C4E764B28E17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireOrleans.AppHost", "AspireOrleans.AppHost\AspireOrleans.AppHost.csproj", "{A7B36FAF-5282-409D-BE5E-9D33A6C4FA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireOrleans.AppHost", "AspireOrleans.AppHost\AspireOrleans.AppHost.csproj", "{A7B36FAF-5282-409D-BE5E-9D33A6C4FA41}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireOrleans.ServiceDefaults", "AspireOrleans.ServiceDefaults\AspireOrleans.ServiceDefaults.csproj", "{D431F013-63DA-4199-8355-CF6A10E20C1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{C4FF225D-DD4A-4090-B856-755EFC23711F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D431F013-63DA-4199-8355-CF6A10E20C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D431F013-63DA-4199-8355-CF6A10E20C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D431F013-63DA-4199-8355-CF6A10E20C1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4FF225D-DD4A-4090-B856-755EFC23711F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4FF225D-DD4A-4090-B856-755EFC23711F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4FF225D-DD4A-4090-B856-755EFC23711F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4FF225D-DD4A-4090-B856-755EFC23711F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
