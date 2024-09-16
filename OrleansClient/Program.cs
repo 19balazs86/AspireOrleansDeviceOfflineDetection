@@ -9,7 +9,7 @@ public static class Program
 
         // Add services to the container
         {
-
+            builder.AddServiceDefaults();
         }
 
         WebApplication app = builder.Build();
@@ -17,6 +17,8 @@ public static class Program
         // Configure the HTTP request pipeline
         {
             app.MapGet("/", () => "Hello from OrleansClient");
+
+            app.MapDefaultEndpoints();
         }
 
         app.Run();
