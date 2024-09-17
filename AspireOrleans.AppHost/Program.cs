@@ -25,7 +25,7 @@ public static class Program
                              .WithServiceId("Devices-Service")
                              .WithClustering(storageTable)
                              .WithGrainStorage("Default", storageTable)
-                             .WithGrainDirectory("Default", storageTable)
+                             .WithGrainDirectory(Constants.GrainDirectoryName, storageTable)
                              .WithReminders(storageTable);
 
         //--> Define: Projects

@@ -25,6 +25,8 @@ public static class Program
             app.MapGet("/", () => "Hello from OrleansClient");
 
             app.MapDefaultEndpoints();
+
+            app.MapDeviceEndpoints();
         }
 
         app.Run();
