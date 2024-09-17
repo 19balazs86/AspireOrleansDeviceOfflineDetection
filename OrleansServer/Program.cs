@@ -31,6 +31,8 @@ public static class Program
             app.MapDefaultEndpoints();
 
             app.MapHub<DeviceHub>(DeviceHub.Path);
+
+            app.MapDeviceEndpoints();
         }
 
         app.Run();
