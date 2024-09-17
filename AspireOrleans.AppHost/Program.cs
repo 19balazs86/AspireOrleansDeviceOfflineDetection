@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Hosting;
 using Shared;
 
 namespace AspireOrleans.AppHost;
@@ -8,7 +9,17 @@ public static class Program
     {
         var builder = DistributedApplication.CreateBuilder(args);
 
+        bool isDevelopment = builder.Environment.IsDevelopment();
+
         //--> Define: Resources
+        IResourceBuilder<RedisResource>? redis = null;
+
+        if (isDevelopment)
+        {
+            redis = builder.AddRedis("Redis", port: 52369)
+                           .WithImageTag("latest");
+        }
+
         var azureStorage = builder.AddAzureStorage("AzureStorage")
             .RunAsEmulator(emulator =>
             {
@@ -34,6 +45,12 @@ public static class Program
                             .WithReference(orleans)
                             .WithReplicas(2)
                             .WaitFor(azureStorage);
+
+        if (redis is not null)
+        {
+            server.WithReference(redis)
+                  .WaitFor(redis);
+        }
 
         var client = builder.AddProject<Projects.OrleansClient>("Client")
                             .WithReference(orleans.AsClient())
