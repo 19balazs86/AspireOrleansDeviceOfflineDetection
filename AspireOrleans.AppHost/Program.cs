@@ -32,9 +32,13 @@ public static class Program
         var server = builder.AddProject<Projects.OrleansServer>("server")
                             .WithReference(storageTable)
                             .WithReference(orleans)
-                            .WithReplicas(2);
+                            .WithReplicas(2)
+                            .WaitFor(azureStorage);
 
-        var client = builder.AddProject<Projects.OrleansClient>("client");
+        var client = builder.AddProject<Projects.OrleansClient>("client")
+                            .WithReference(orleans.AsClient())
+                            .WithReplicas(2)
+                            .WaitFor(server);
 
         builder.Build().Run();
     }

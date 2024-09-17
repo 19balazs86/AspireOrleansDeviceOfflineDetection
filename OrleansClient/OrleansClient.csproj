@@ -4,7 +4,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.Azure.Data.Tables" Version="8.2.0" />
+
+    <PackageReference Include="Microsoft.Orleans.Clustering.AzureStorage" Version="8.2.0" />
+    <PackageReference Include="Microsoft.Orleans.Client" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AspireOrleans.ServiceDefaults\AspireOrleans.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>
