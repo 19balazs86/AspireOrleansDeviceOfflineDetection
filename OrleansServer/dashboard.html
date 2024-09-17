@@ -50,7 +50,8 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', initSignalRConnection);
 
-        function initSignalRConnection() {
+        function initSignalRConnection()
+        {
             var connection = new signalR.HubConnectionBuilder()
                                         .withUrl('/hub/devices')
                                         .build();
@@ -62,10 +63,12 @@
                       .catch(error => console.error(error.message));
         }
 
-        function statusChanged(deviceId, status) {
+        function statusChanged(deviceId, status)
+        {
             let liElement = document.getElementById(deviceId);
 
-            if (!liElement) {
+            if (!liElement)
+            {
                 liElement           = document.createElement('li');
                 liElement.id        = deviceId
                 liElement.innerHTML = deviceId;

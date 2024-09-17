@@ -1,6 +1,6 @@
-@OrleansClient_HostAddress = http://localhost:5287
+@HostAddress = https://localhost:7251
 
-GET {{OrleansClient_HostAddress}}/
+GET {{HostAddress}}/send-heartbeat
 Accept: application/json
 
 ###
