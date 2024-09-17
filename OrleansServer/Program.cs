@@ -1,3 +1,4 @@
+using OrleansServer.Hubs;
 using Shared;
 
 namespace OrleansServer;
@@ -8,6 +9,7 @@ public static class Program
     {
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
         IServiceCollection services   = builder.Services;
+        IConfiguration configuration  = builder.Configuration;
 
         // Add services to the container
         {
@@ -16,6 +18,8 @@ public static class Program
             builder.AddKeyedAzureTableClient(Constants.AzureTableStorageConnStringName);
 
             builder.UseOrleans();
+
+            services.AddSignalR();
         }
 
         WebApplication app = builder.Build();
@@ -25,6 +29,8 @@ public static class Program
             app.MapGet("/", () => "Hello from OrleansServer");
 
             app.MapDefaultEndpoints();
+
+            app.MapHub<DeviceHub>(DeviceHub.Path);
         }
 
         app.Run();
