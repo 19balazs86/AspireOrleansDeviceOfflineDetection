@@ -7,11 +7,15 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.Storage" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Orleans" Version="8.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OrleansClient\OrleansClient.csproj" />
     <ProjectReference Include="..\OrleansServer\OrleansServer.csproj" />
+
+    <ProjectReference Include="..\Shared\Shared.csproj" IsAspireProjectResource="False" />
   </ItemGroup>
 
 </Project>

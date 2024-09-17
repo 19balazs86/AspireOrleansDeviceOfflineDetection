@@ -1,3 +1,5 @@
+using Shared;
+
 namespace AspireOrleans.AppHost;
 
 public static class Program
@@ -6,7 +8,31 @@ public static class Program
     {
         var builder = DistributedApplication.CreateBuilder(args);
 
-        var server = builder.AddProject<Projects.OrleansServer>("server");
+        //--> Define: Resources
+        var azureStorage = builder.AddAzureStorage("storage")
+            .RunAsEmulator(emulator =>
+            {
+                emulator.WithBlobPort(10_000)
+                        .WithQueuePort(10_001)
+                        .WithTablePort(10_002)
+                        .WithImageTag("latest");
+            });
+
+        var storageTable = azureStorage.AddTables(Constants.AzureTableStorageConnStringName);
+
+        var orleans = builder.AddOrleans("default")
+                             .WithClusterId("Devices-Cluster")
+                             .WithServiceId("Devices-Service")
+                             .WithClustering(storageTable)
+                             .WithGrainStorage("Default", storageTable)
+                             .WithGrainDirectory("Default", storageTable)
+                             .WithReminders(storageTable);
+
+        //--> Define: Projects
+        var server = builder.AddProject<Projects.OrleansServer>("server")
+                            .WithReference(storageTable)
+                            .WithReference(orleans)
+                            .WithReplicas(2);
 
         var client = builder.AddProject<Projects.OrleansClient>("client");
 

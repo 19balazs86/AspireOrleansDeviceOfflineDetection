@@ -1,3 +1,5 @@
+using Shared;
+
 namespace OrleansServer;
 
 public static class Program
@@ -10,6 +12,10 @@ public static class Program
         // Add services to the container
         {
             builder.AddServiceDefaults();
+
+            builder.AddKeyedAzureTableClient(Constants.AzureTableStorageConnStringName);
+
+            builder.UseOrleans();
         }
 
         WebApplication app = builder.Build();
