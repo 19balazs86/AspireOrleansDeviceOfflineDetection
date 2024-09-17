@@ -41,6 +41,8 @@ public static class Program
 
         //--> Define: Projects
         var server = builder.AddProject<Projects.OrleansServer>("Server")
+                            .WithExternalHttpEndpoints()
+                            .WithHttpEndpoint(name: "OrleansDashboard", env: "OrleansDashboardPort")
                             .WithReference(storageTable)
                             .WithReference(orleans)
                             .WithReplicas(2)
@@ -53,6 +55,7 @@ public static class Program
         }
 
         var client = builder.AddProject<Projects.OrleansClient>("Client")
+                            .WithExternalHttpEndpoints()
                             .WithReference(orleans.AsClient())
                             .WithReplicas(2)
                             .WaitFor(server);

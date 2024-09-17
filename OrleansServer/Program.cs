@@ -17,9 +17,9 @@ public static class Program
 
             builder.AddKeyedAzureTableClient(Constants.AzureTableStorageConnStringName);
 
-            builder.UseOrleans();
+            builder.useOrleans_With_Dashboard();
 
-            builder.addSignalR_WithBackplane();
+            builder.addSignalR_With_Backplane();
         }
 
         WebApplication app = builder.Build();
@@ -38,11 +38,22 @@ public static class Program
         app.Run();
     }
 
-    private static void addSignalR_WithBackplane(this IHostApplicationBuilder builder)
+    private static void useOrleans_With_Dashboard(this IHostApplicationBuilder builder)
     {
-        IServiceCollection services  = builder.Services;
+        int port = builder.Configuration.GetValue<int?>("OrleansDashboardPort")
+            ?? throw new NullReferenceException("Missing configuration: OrleansDashboardPort");
+
+        builder.UseOrleans(siloBuilder =>
+        {
+            siloBuilder.UseDashboard(options => options.Port = port);
+        });
+    }
+
+    private static void addSignalR_With_Backplane(this IHostApplicationBuilder builder)
+    {
         IConfiguration configuration = builder.Configuration;
-        bool isDevelopment           = builder.Environment.IsDevelopment();
+
+        bool isDevelopment = builder.Environment.IsDevelopment();
 
         string? backplaneConnString = isDevelopment ?
             configuration.GetConnectionString("Redis") :
@@ -50,7 +61,7 @@ public static class Program
 
         ArgumentException.ThrowIfNullOrWhiteSpace(backplaneConnString);
 
-        var signalR = services.AddSignalR();
+        var signalR = builder.Services.AddSignalR();
 
         if (isDevelopment)
         {
