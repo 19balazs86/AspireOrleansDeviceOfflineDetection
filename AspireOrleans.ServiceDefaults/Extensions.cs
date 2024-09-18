@@ -35,16 +35,18 @@ public static class Extensions
             .AddOpenTelemetry()
             .WithMetrics(metrics =>
             {
-                metrics
-                    .AddAspNetCoreInstrumentation()
-                    .AddHttpClientInstrumentation();
-                    //.AddRuntimeInstrumentation();
+                metrics.AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation();
+                       //.AddMeter("Microsoft.Orleans");
+                       //.AddRuntimeInstrumentation();
             })
             .WithTracing(tracing =>
             {
-                tracing
-                    .AddAspNetCoreInstrumentation()
-                    .AddHttpClientInstrumentation();
+                tracing.AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation();
+
+                //tracing.AddSource("Microsoft.Orleans.Runtime")
+                //       .AddSource("Microsoft.Orleans.Application");
             })
             .WithLogging(lpb => { }, logging =>
             {
