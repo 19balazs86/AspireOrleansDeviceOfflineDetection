@@ -50,6 +50,8 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', initSignalRConnection);
 
+        var signalRConnection
+
         function initSignalRConnection()
         {
             var connection = new signalR.HubConnectionBuilder()
@@ -61,6 +63,8 @@
             connection.start()
                       .then(() => console.log('Connection started'))
                       .catch(error => console.error(error.message));
+
+            signalRConnection = connection;
         }
 
         function statusChanged(deviceId, status)
@@ -73,10 +77,31 @@
                 liElement.id        = deviceId
                 liElement.innerHTML = deviceId;
 
+                liElement.addEventListener('click', handleClickEvent);
+
                 document.getElementById('statusses').appendChild(liElement);
             }
 
             liElement.className = status;
+        }
+
+        function handleClickEvent(element)
+        {
+            if (signalRConnection.state != signalR.HubConnectionState.Connected)
+            {
+                return;
+            }
+
+            let deviceId = element.srcElement.id;
+
+            signalRConnection
+                .invoke("SendHeartbeat", deviceId)
+                .then(response => {
+                    console.log("SendHeartbeat is sent");
+                })
+                .catch(err => {
+                    console.error("Error invoking method:", err);
+                });
         }
     </script>
 </body>
