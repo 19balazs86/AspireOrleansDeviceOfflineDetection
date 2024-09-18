@@ -41,8 +41,8 @@ public static class Program
 
     private static void useOrleans_With_Dashboard(this IHostApplicationBuilder builder)
     {
-        int port = builder.Configuration.GetValue<int?>("OrleansDashboardPort")
-            ?? throw new NullReferenceException("Missing configuration: OrleansDashboardPort");
+        int port = builder.Configuration.GetValue<int?>("Orleans:DashboardPort")
+            ?? throw new NullReferenceException("Missing configuration: Orleans:DashboardPort");
 
         builder.UseOrleans(siloBuilder =>
         {

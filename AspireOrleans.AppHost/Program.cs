@@ -42,7 +42,7 @@ public static class Program
         //--> Define: Projects
         var server = builder.AddProject<Projects.OrleansServer>("Server")
                             .WithExternalHttpEndpoints()
-                            .WithHttpEndpoint(name: "OrleansDashboard", env: "OrleansDashboardPort", port: 8585)
+                            .WithHttpEndpoint(name: "OrleansDashboard", env: "Orleans__DashboardPort", port: 8585)
                             .WithReference(storageTable)
                             .WithReference(orleans)
                             .WithReplicas(2)
