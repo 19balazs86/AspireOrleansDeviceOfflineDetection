@@ -68,21 +68,17 @@ public static class Extensions
 
         OpenTelemetryBuilder telemetryBuilder = builder.Services.AddOpenTelemetry();
 
-        bool useOtlpExporter = !string.IsNullOrWhiteSpace(configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
+        bool useAzureMonitor = configuration.exists("APPLICATIONINSIGHTS_CONNECTION_STRING") && builder.Environment.IsProduction();
 
-        if (useOtlpExporter)
+        bool useOtlpExporter = configuration.exists("OTEL_EXPORTER_OTLP_ENDPOINT");
+
+        if (useAzureMonitor)
+        {
+            telemetryBuilder.UseAzureMonitor();
+        }
+        else if (useOtlpExporter)
         {
             telemetryBuilder.UseOtlpExporter();
-        }
-
-        if (builder.Environment.IsProduction())
-        {
-            bool useAzureMonitor = !string.IsNullOrWhiteSpace(configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
-
-            if (useAzureMonitor)
-            {
-                telemetryBuilder.UseAzureMonitor();
-            }
         }
 
         return builder;
@@ -109,6 +105,11 @@ public static class Extensions
         }
 
         return app;
+    }
+
+    private static bool exists(this IConfiguration configuration, string key)
+    {
+        return !string.IsNullOrWhiteSpace(configuration[key]);
     }
 
     private static readonly HealthCheckOptions _liveHealthCheckOptions = new () { Predicate = r => r.Tags.Contains("live") };
