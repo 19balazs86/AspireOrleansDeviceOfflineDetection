@@ -1,5 +1,7 @@
+using Azure.Monitor.OpenTelemetry.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
@@ -36,8 +38,8 @@ public static class Extensions
             .WithMetrics(metrics =>
             {
                 metrics.AddAspNetCoreInstrumentation()
-                       .AddHttpClientInstrumentation();
-                       //.AddMeter("Microsoft.Orleans");
+                       .AddHttpClientInstrumentation()
+                       .AddMeter("Microsoft.Orleans");
                        //.AddRuntimeInstrumentation();
             })
             .WithTracing(tracing =>
@@ -45,8 +47,9 @@ public static class Extensions
                 tracing.AddAspNetCoreInstrumentation()
                        .AddHttpClientInstrumentation();
 
-                //tracing.AddSource("Microsoft.Orleans.Runtime")
-                //       .AddSource("Microsoft.Orleans.Application");
+                // tracing.AddSource("Microsoft.Orleans.Runtime"); // It produces numerous tracing records every second
+
+                tracing.AddSource("Microsoft.Orleans.Application");
             })
             .WithLogging(lpb => { }, logging =>
             {
@@ -61,19 +64,26 @@ public static class Extensions
 
     private static IHostApplicationBuilder addOpenTelemetryExporters(this IHostApplicationBuilder builder)
     {
-        var useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
+        IConfiguration configuration = builder.Configuration;
+
+        OpenTelemetryBuilder telemetryBuilder = builder.Services.AddOpenTelemetry();
+
+        bool useOtlpExporter = !string.IsNullOrWhiteSpace(configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
 
         if (useOtlpExporter)
         {
-            builder.Services.AddOpenTelemetry().UseOtlpExporter();
+            telemetryBuilder.UseOtlpExporter();
         }
 
-        // Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.AspNetCore package)
-        //if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
-        //{
-        //    builder.Services.AddOpenTelemetry()
-        //       .UseAzureMonitor();
-        //}
+        if (builder.Environment.IsProduction())
+        {
+            bool useAzureMonitor = !string.IsNullOrWhiteSpace(configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
+
+            if (useAzureMonitor)
+            {
+                telemetryBuilder.UseAzureMonitor();
+            }
+        }
 
         return builder;
     }

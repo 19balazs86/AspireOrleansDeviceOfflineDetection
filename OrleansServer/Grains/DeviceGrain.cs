@@ -63,7 +63,7 @@ public sealed class DeviceGrain : Grain, IDeviceGrain
 
     public async Task ReceiveReminder(string reminderName, TickStatus status)
     {
-        _logger.LogInformation("Received reminder: {ReminderName}", reminderName);
+        _logger.LogInformation("Device({name}) received a reminder: {ReminderName}", _deviceId, reminderName);
 
         if (_offlineReminderName.Equals(reminderName))
         {
