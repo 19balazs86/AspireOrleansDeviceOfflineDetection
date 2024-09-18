@@ -9,7 +9,7 @@ public static class Endpoints
         app.MapGet("/send-heartbeat", sendHeartbeat);
     }
 
-    private static async Task sendHeartbeat(IClusterClient clusterClient)
+    private static async Task<string> sendHeartbeat(IClusterClient clusterClient)
     {
         int[] deviceIds = Enumerable.Range(0, 10).Select(_ => Random.Shared.Next(1, 21)).ToArray();
 
@@ -19,5 +19,7 @@ public static class Endpoints
 
             await deviceGrain.ReceiveHeartbeat();
         });
+
+        return $"Heartbeat sent by devices: [{string.Join(", ", deviceIds.Order())}]";
     }
 }

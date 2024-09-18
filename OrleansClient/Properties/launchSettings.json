@@ -5,7 +5,7 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
-      "launchUrl": "",
+      "launchUrl": "send-heartbeat",
       "applicationUrl": "https://localhost:7251",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
