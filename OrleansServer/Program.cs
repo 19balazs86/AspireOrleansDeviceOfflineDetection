@@ -1,3 +1,4 @@
+using Orleans.Configuration;
 using OrleansServer.Hubs;
 using Shared;
 using StackExchange.Redis;
@@ -46,6 +47,11 @@ public static class Program
         builder.UseOrleans(siloBuilder =>
         {
             siloBuilder.UseDashboard(options => options.Port = port);
+        });
+
+        builder.Services.Configure<AzureTableStorageOptions>(options =>
+        {
+            options.DeleteStateOnClear = true; // Even if this is set to true, the record does not get deleted
         });
     }
 

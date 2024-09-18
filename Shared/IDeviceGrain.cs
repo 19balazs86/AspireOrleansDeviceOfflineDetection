@@ -1,6 +1,6 @@
 ﻿namespace Shared;
 
-public interface IDeviceGrain : IGrainWithStringKey
+public interface IDeviceGrain : IGrainWithStringKey, IRemindable
 {
     Task ReceiveHeartbeat();
 }
