@@ -6,7 +6,7 @@ using Shared;
 
 namespace OrleansServer.Grains;
 
-[GrainDirectory(Constants.GrainDirectoryName)]
+[GrainDirectory(Constants.GrainDirectory_Name)]
 public sealed class DeviceGrain : Grain, IDeviceGrain
 {
     private const string _offlineReminderName = "Offline";

@@ -16,7 +16,7 @@ public static class Program
 
         if (isDevelopment)
         {
-            redis = builder.AddRedis("Redis", port: 52369)
+            redis = builder.AddRedis(Constants.Redis_ConnString_Name, port: 52369)
                            .WithImageTag("latest");
         }
 
@@ -29,14 +29,14 @@ public static class Program
                         .WithImageTag("latest");
             });
 
-        var storageTable = azureStorage.AddTables(Constants.AzureTableStorageConnStringName);
+        var storageTable = azureStorage.AddTables(Constants.AzureTableStorage_ConnString_Name);
 
         var orleans = builder.AddOrleans("SeviceOrleans")
                              .WithClusterId("DeviceCluster")
                              .WithServiceId("DeviceService")
                              .WithClustering(storageTable)
                              .WithGrainStorage("Default", storageTable)
-                             .WithGrainDirectory(Constants.GrainDirectoryName, storageTable)
+                             .WithGrainDirectory(Constants.GrainDirectory_Name, storageTable)
                              .WithReminders(storageTable);
 
         //--> Define: Projects

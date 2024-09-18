@@ -2,7 +2,9 @@
 
 public static class Constants
 {
-    public const string AzureTableStorageConnStringName = "AzureTableStorageEndpoint";
+    public const string AzureTableStorage_ConnString_Name = "AzureTableStorageEndpoint";
 
-    public const string GrainDirectoryName = "AzureTableStorageGrainDirectory";
+    public const string Redis_ConnString_Name = "Redis";
+
+    public const string GrainDirectory_Name = "AzureTableStorageGrainDirectory";
 }

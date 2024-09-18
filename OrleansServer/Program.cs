@@ -16,7 +16,7 @@ public static class Program
         {
             builder.AddServiceDefaults();
 
-            builder.AddKeyedAzureTableClient(Constants.AzureTableStorageConnStringName);
+            builder.AddKeyedAzureTableClient(Constants.AzureTableStorage_ConnString_Name);
 
             builder.useOrleans_With_Dashboard();
 
@@ -62,7 +62,7 @@ public static class Program
         bool isDevelopment = builder.Environment.IsDevelopment();
 
         string? backplaneConnString = isDevelopment ?
-            configuration.GetConnectionString("Redis") :
+            configuration.GetConnectionString(Constants.Redis_ConnString_Name) :
             configuration.GetConnectionString("AzureSignalR");
 
         ArgumentException.ThrowIfNullOrWhiteSpace(backplaneConnString);

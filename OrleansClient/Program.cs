@@ -13,7 +13,7 @@ public static class Program
         {
             builder.AddServiceDefaults();
 
-            builder.AddKeyedAzureTableClient(Constants.AzureTableStorageConnStringName);
+            builder.AddKeyedAzureTableClient(Constants.AzureTableStorage_ConnString_Name);
 
             builder.UseOrleansClient();
         }
