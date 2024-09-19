@@ -1,4 +1,5 @@
 using Shared;
+using System.Net.Mime;
 
 namespace OrleansClient;
 
@@ -7,7 +8,6 @@ public static class Program
     public static void Main(string[] args)
     {
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        IServiceCollection services   = builder.Services;
 
         // Add services to the container
         {
@@ -22,7 +22,7 @@ public static class Program
 
         // Configure the HTTP request pipeline
         {
-            app.MapGet("/", () => "Hello from OrleansClient");
+            app.MapGet("/", () => TypedResults.Content("Hello from OrleansClient | <a href='/send-heartbeat'>Send Heartbeat</a>", MediaTypeNames.Text.Html));
 
             app.MapDefaultEndpoints();
 

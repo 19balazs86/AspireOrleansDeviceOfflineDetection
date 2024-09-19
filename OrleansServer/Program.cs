@@ -2,6 +2,7 @@ using Orleans.Configuration;
 using OrleansServer.Hubs;
 using Shared;
 using StackExchange.Redis;
+using System.Net.Mime;
 
 namespace OrleansServer;
 
@@ -10,7 +11,6 @@ public static class Program
     public static void Main(string[] args)
     {
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        IServiceCollection services   = builder.Services;
 
         // Add services to the container
         {
@@ -27,7 +27,7 @@ public static class Program
 
         // Configure the HTTP request pipeline
         {
-            app.MapGet("/", () => "Hello from OrleansServer");
+            app.MapGet("/", () => TypedResults.Content("Hello from OrleansServer | <a href='/dashboard'>Dashboard</a>", MediaTypeNames.Text.Html));
 
             app.MapDefaultEndpoints();
 
