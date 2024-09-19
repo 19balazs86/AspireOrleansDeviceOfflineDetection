@@ -15,6 +15,7 @@ I have adopted the version of Azure Functions with Durable Entities in the style
   - Dashboard
 - Distributed tracing with **OpenTelemetry**
 - **.NET Aspire** bringing everything together, making it a pleasure to work with
+- Deploy to Azure Container Apps
 
 ## Running it locally
 
@@ -39,3 +40,13 @@ I have adopted the version of Azure Functions with Durable Entities in the style
   - [Best practices](https://learn.microsoft.com/en-us/dotnet/orleans/resources/best-practices)
   - [NuGet packages](https://learn.microsoft.com/en-us/dotnet/orleans/resources/nuget-packages)
 - [Playing with Microsoft Orleans](https://github.com/19balazs86/PlayingWithOrleans) 👤
+
+## Infrastructure provisioning with a Bicep template
+
+- You can find a [main.bicep](bicep-script/main.bicep) template file that contains all the related objects for provisioning the infrastructure of Azure Container Apps
+- Improvement: Instead of using the connection string of SignalR and Storage-Account, would be better to create a User Assigned Identity and use RBAC. But for simplicity the connection string suffice.
+- Note: The Orleans Dashboard is working fine on port 8585, but it runs on HTTP, not HTTPS.
+
+![Bicep template](bicep-script/bicep-infrastructure.JPG)
+
+![Screen](bicep-script/Screen.jpg)
