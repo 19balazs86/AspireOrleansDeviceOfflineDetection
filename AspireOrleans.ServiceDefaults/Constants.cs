@@ -1,4 +1,4 @@
-﻿namespace Shared;
+﻿namespace AspireOrleans.ServiceDefaults;
 
 public static class Constants
 {

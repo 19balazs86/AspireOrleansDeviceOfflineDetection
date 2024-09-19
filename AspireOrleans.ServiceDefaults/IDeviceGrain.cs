@@ -1,4 +1,4 @@
-﻿namespace Shared;
+﻿namespace AspireOrleans.ServiceDefaults;
 
 public interface IDeviceGrain : IGrainWithStringKey, IRemindable
 {

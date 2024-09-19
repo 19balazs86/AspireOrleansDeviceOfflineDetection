@@ -18,7 +18,7 @@
     <ProjectReference Include="..\OrleansClient\OrleansClient.csproj" />
     <ProjectReference Include="..\OrleansServer\OrleansServer.csproj" />
 
-    <ProjectReference Include="..\Shared\Shared.csproj" IsAspireProjectResource="False" />
+    <ProjectReference Include="..\AspireOrleans.ServiceDefaults\AspireOrleans.ServiceDefaults.csproj" IsAspireProjectResource="False" />
   </ItemGroup>
 
 </Project>

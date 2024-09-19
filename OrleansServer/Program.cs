@@ -1,6 +1,6 @@
+using AspireOrleans.ServiceDefaults;
 using Orleans.Configuration;
 using OrleansServer.FeatureDevice;
-using Shared;
 using StackExchange.Redis;
 using System.Net.Mime;
 

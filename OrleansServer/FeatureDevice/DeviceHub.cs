@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using Shared;
+﻿using AspireOrleans.ServiceDefaults;
+using Microsoft.AspNetCore.SignalR;
 
 namespace OrleansServer.FeatureDevice;
 

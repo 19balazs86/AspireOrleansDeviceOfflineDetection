@@ -1,5 +1,5 @@
+using AspireOrleans.ServiceDefaults;
 using Microsoft.Extensions.Hosting;
-using Shared;
 
 namespace AspireOrleans.AppHost;
 

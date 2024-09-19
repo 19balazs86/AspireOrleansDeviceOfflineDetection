@@ -1,4 +1,4 @@
-﻿using Shared;
+﻿using AspireOrleans.ServiceDefaults;
 
 namespace OrleansClient;
 

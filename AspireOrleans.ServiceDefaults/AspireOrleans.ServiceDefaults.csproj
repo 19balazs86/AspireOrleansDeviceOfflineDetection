@@ -15,6 +15,9 @@
     <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.9.0" />
     <!--<PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.9.0" />-->
+
+    <PackageReference Include="Microsoft.Orleans.Sdk" Version="8.2.0" />
+    <PackageReference Include="Microsoft.Orleans.Reminders" Version="8.2.0" />
   </ItemGroup>
 
 </Project>

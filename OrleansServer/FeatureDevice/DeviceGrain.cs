@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using AspireOrleans.ServiceDefaults;
+using Microsoft.AspNetCore.SignalR;
 using Orleans.GrainDirectory;
-using Shared;
 
 namespace OrleansServer.FeatureDevice;
 

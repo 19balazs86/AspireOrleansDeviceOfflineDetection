@@ -33,7 +33,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AspireOrleans.ServiceDefaults\AspireOrleans.ServiceDefaults.csproj" />
-    <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
