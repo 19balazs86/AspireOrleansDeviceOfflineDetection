@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Orleans.GrainDirectory;
-using OrleansServer.GrainStates;
-using OrleansServer.Hubs;
 using Shared;
 
-namespace OrleansServer.Grains;
+namespace OrleansServer.FeatureDevice;
 
 [GrainDirectory(Constants.GrainDirectory_Name)]
 public sealed class DeviceGrain : Grain, IDeviceGrain

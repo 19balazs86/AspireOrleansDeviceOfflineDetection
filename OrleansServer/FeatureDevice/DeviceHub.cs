@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Shared;
 
-namespace OrleansServer.Hubs;
+namespace OrleansServer.FeatureDevice;
 
 public interface IDeviceHubClient
 {

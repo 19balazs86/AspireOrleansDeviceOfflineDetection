@@ -1,5 +1,5 @@
 using Orleans.Configuration;
-using OrleansServer.Hubs;
+using OrleansServer.FeatureDevice;
 using Shared;
 using StackExchange.Redis;
 using System.Net.Mime;

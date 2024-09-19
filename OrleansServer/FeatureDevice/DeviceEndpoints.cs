@@ -1,8 +1,8 @@
 ﻿using System.Net.Mime;
 
-namespace OrleansServer;
+namespace OrleansServer.FeatureDevice;
 
-public static class Endpoints
+public static class DeviceEndpoints
 {
     public static void MapDeviceEndpoints(this IEndpointRouteBuilder app)
     {

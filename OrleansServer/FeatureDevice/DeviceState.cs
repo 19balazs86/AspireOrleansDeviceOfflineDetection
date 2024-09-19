@@ -1,4 +1,4 @@
-﻿namespace OrleansServer.GrainStates;
+﻿namespace OrleansServer.FeatureDevice;
 
 [GenerateSerializer]
 public sealed class DeviceState
