@@ -43,6 +43,7 @@ public sealed class DeviceGrain : Grain, IDeviceGrain
 
         if (_deleteReminder is not null)
         {
+            // Instead of Reminder, you could use Timer, which is simpler, more lightweight, and does not require a storage provider
             await this.UnregisterReminder(_deleteReminder);
 
             _deleteReminder = null;
