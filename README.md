@@ -16,6 +16,8 @@ I have adopted the version of Azure Functions with Durable Entities in the style
 - Distributed tracing with **OpenTelemetry**
 - **.NET Aspire** bringing everything together, making it a pleasure to work with
 - Deploy to Azure Container Apps
+  - Container Apps support Dapr, and the same concept applies to the Dapr Actor framework
+  - While Orleans requires a custom virtual network when creating a Container Environment, the Dapr Actor framework can work with the default environment
 
 ## Running it locally
 
