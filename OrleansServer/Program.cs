@@ -41,6 +41,8 @@ public static class Program
 
     private static void useOrleans_With_Dashboard(this IHostApplicationBuilder builder)
     {
+        var services = builder.Services;
+
         int port = builder.Configuration.GetValue<int?>("Orleans:DashboardPort")
             ?? throw new NullReferenceException("Missing configuration: Orleans:DashboardPort");
 
@@ -49,9 +51,18 @@ public static class Program
             siloBuilder.UseDashboard(options => options.Port = port);
         });
 
-        builder.Services.Configure<AzureTableStorageOptions>(options =>
+        services.Configure<AzureTableStorageOptions>(options =>
         {
             options.DeleteStateOnClear = true; // Even if this is set to true, the record does not get deleted
+        });
+
+        services.Configure<GrainCollectionOptions>(options =>
+        {
+            options.CollectionAge = TimeSpan.FromMinutes(5);
+
+            // You can set the "idle timeout" for a specific type with an attribute on the grain class
+            // [CollectionAgeLimit(Minutes = 5)]
+            // options.ClassSpecificCollectionAge[RuntimeTypeNameFormatter.Format(typeof(DeviceGrain))] = TimeSpan.FromMinutes(5);
         });
     }
 
