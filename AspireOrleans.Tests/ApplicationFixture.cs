@@ -27,6 +27,17 @@ public sealed class ApplicationFixture : IAsyncLifetime
         OrleansServer_HttpClient = _application.CreateHttpClient("Server");
     }
 
+    public async Task<HubConnection> GetHubConnectionAsync()
+    {
+        var hubUrl = new Uri(OrleansServer_HttpClient.BaseAddress!, "/hub/devices");
+
+        HubConnection hubConnection = new HubConnectionBuilder().WithUrl(hubUrl).Build();
+
+        await hubConnection.StartAsync();
+
+        return hubConnection;
+    }
+
     public async Task DisposeAsync()
     {
         if (_application is not null)

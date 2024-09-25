@@ -28,4 +28,30 @@ public sealed class IntegrationTests : IClassFixture<ApplicationFixture>
         // Assert
         Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
     }
+
+    [Fact]
+    public async Task Should_receive_SignalR_Notification_When_Device_receives_Heartbeat()
+    {
+        // Arrange
+        const string expectedDeviceId = "Device01";
+
+        using var manualResetEvent = new ManualResetEventSlim();
+
+        await using HubConnection hubConnection = await _fixture.GetHubConnectionAsync();
+
+        hubConnection.On<string, string>("NotifyStatusChanged", (deviceId, status) =>
+        {
+            Assert.Equal(expectedDeviceId, deviceId);
+
+            manualResetEvent.Set();
+        });
+
+        // Act
+        await hubConnection.InvokeAsync<string>("SendHeartbeat", expectedDeviceId);
+
+        manualResetEvent.Wait(TimeSpan.FromSeconds(5));
+
+        // Assert
+        Assert.True(manualResetEvent.IsSet);
+    }
 }
