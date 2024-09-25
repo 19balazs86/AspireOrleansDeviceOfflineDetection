@@ -35,6 +35,7 @@ I have adopted the version of Azure Functions with Durable Entities in the style
 - [Documentation](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview) 📚*MS-Learn*
   - [Integrations](https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/integrations-overview)
   - [Orleans with .NET Aspire](https://learn.microsoft.com/en-us/dotnet/aspire/frameworks/orleans)
+- [Samples](https://github.com/dotnet/aspire-samples) | [Aspire / playground samples](https://github.com/dotnet/aspire/tree/main/playground) 👤*dotnet*
 
 #### Orleans
 
