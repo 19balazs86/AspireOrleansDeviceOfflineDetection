@@ -1,7 +1,7 @@
-using AspireOrleans.ServiceDefaults;
 using Microsoft.Extensions.Hosting;
+using ServiceDefaults;
 
-namespace AspireOrleans.AppHost;
+namespace AppHost;
 
 public static class Program
 {

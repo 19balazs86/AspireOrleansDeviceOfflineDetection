@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansServer", "OrleansSer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansClient", "OrleansClient\OrleansClient.csproj", "{9BD0CB86-289B-4F8F-9450-C4E764B28E17}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireOrleans.AppHost", "AspireOrleans.AppHost\AspireOrleans.AppHost.csproj", "{A7B36FAF-5282-409D-BE5E-9D33A6C4FA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppHost", "AppHost\AppHost.csproj", "{A7B36FAF-5282-409D-BE5E-9D33A6C4FA41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireOrleans.ServiceDefaults", "AspireOrleans.ServiceDefaults\AspireOrleans.ServiceDefaults.csproj", "{D431F013-63DA-4199-8355-CF6A10E20C1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDefaults", "ServiceDefaults\ServiceDefaults.csproj", "{D431F013-63DA-4199-8355-CF6A10E20C1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireOrleans.Tests", "AspireOrleans.Tests\AspireOrleans.Tests.csproj", "{43201B6F-D760-4306-8034-2EA83B0DE425}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTest", "IntegrationTest\IntegrationTest.csproj", "{43201B6F-D760-4306-8034-2EA83B0DE425}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

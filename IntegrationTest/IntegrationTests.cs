@@ -1,4 +1,4 @@
-namespace AspireOrleans.Tests;
+namespace IntegrationTest;
 
 public sealed class IntegrationTests : IClassFixture<ApplicationFixture>
 {

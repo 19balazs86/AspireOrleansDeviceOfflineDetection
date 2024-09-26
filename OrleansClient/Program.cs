@@ -1,4 +1,4 @@
-using AspireOrleans.ServiceDefaults;
+using ServiceDefaults;
 using System.Net.Mime;
 
 namespace OrleansClient;

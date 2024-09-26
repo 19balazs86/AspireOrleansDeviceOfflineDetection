@@ -1,4 +1,4 @@
-﻿namespace AspireOrleans.Tests;
+﻿namespace IntegrationTest;
 
 public sealed class ApplicationFixture : IAsyncLifetime
 {
@@ -12,7 +12,7 @@ public sealed class ApplicationFixture : IAsyncLifetime
     {
         const string clientName = "Client";
 
-        var appHost = await DistributedApplicationTestingBuilder.CreateAsync<Projects.AspireOrleans_AppHost>();
+        var appHost = await DistributedApplicationTestingBuilder.CreateAsync<Projects.AppHost>();
 
         _application = await appHost.BuildAsync();
 
