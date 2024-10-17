@@ -1,7 +1,4 @@
-﻿using Aspire.Hosting;
-using Aspire.Hosting.ApplicationModel;
-
-namespace IntegrationTest;
+﻿namespace IntegrationTest;
 
 public sealed class ApplicationFixture : IAsyncLifetime
 {
