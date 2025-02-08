@@ -19,8 +19,8 @@
   <ItemGroup>
     <PackageReference Include="Aspire.Azure.Data.Tables" Version="9.0.0" />
 
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.29.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="9.0.1" />
+    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.30.0" />
 
     <PackageReference Include="Microsoft.Orleans.Clustering.AzureStorage" Version="9.0.1" />
     <PackageReference Include="Microsoft.Orleans.GrainDirectory.AzureStorage" Version="9.0.1" />
